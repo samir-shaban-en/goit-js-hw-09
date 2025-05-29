@@ -24,9 +24,16 @@ body {
   margin: 0;
 }
 
-main {
-  flex-grow: 1;
+ul {
+  margin: 0;
+  padding-left: 0;
 }
-main:has(.back-link) {
-  text-align: center;
+li {
+  list-style-type: none;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
