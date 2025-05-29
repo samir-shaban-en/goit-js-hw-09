@@ -37,3 +37,11 @@ img {
   height: auto;
   object-fit: cover;
 }
+
+input {
+  outline: none;
+}
+.nav {
+  margin-left: 20px;
+  margin-top: 20px;
+}

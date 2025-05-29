@@ -79,7 +79,7 @@ const makeGalleryMarkup = images => {
         class="gallery-image"
         src="${preview}"
         alt="${description}"
-        title = "${description}"
+
       />
     </a>
   </li>`
@@ -89,4 +89,7 @@ const makeGalleryMarkup = images => {
 
 galleryEl.insertAdjacentHTML('beforeend', makeGalleryMarkup(images));
 
-const gallery = new SimpleLightbox('.gallery a', { captionDelay: 250 });
+new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+});
