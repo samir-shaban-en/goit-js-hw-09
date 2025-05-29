@@ -4,8 +4,8 @@
         class="gallery-image"
         src="${t}"
         alt="${i}"
-        title = "${i}"
+
       />
     </a>
-  </li>`).join("");s.insertAdjacentHTML("beforeend",l(c));new n(".gallery a",{captionDelay:250});
+  </li>`).join("");s.insertAdjacentHTML("beforeend",l(c));new n(".gallery a",{captionDelay:250,captionsData:"alt"});
 //# sourceMappingURL=1-gallery.js.map
