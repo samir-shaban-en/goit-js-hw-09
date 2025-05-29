@@ -10,9 +10,9 @@ function formHandler(e) {
   const emailValue = e.currentTarget.email.value;
   const messageValue = e.currentTarget.message.value;
 
-  formData.email = emailValue;
-  formData.message = messageValue;
-
+  formData.email = emailValue.trim();
+  formData.message = messageValue.trim();
+  console.log(formData);
   localStorage.setItem(storageKey, JSON.stringify(formData));
 }
 
@@ -25,11 +25,14 @@ function addStorageValueToInput(storageValue) {
 
   const parsedValue = JSON.parse(storageValue);
 
-  formEl.elements.email.value = parsedValue.email;
-  formEl.elements.message.value = parsedValue.message;
+  const emailValue = parsedValue.email;
+  const messageValue = parsedValue.message;
 
-  formData.email = parsedValue.email;
-  formData.message = parsedValue.message;
+  formEl.elements.email.value = emailValue;
+  formEl.elements.message.value = messageValue;
+
+  formData.email = emailValue;
+  formData.message = messageValue;
 }
 
 addStorageValueToInput(localStorage.getItem(storageKey));
