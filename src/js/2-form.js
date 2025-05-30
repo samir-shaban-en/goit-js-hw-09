@@ -27,8 +27,8 @@ function addStorageValueToForm(storageValue) {
   formEl.elements.email.value = parsedValue.email;
   formEl.elements.message.value = parsedValue.message;
 
-  formData.email = emailValue;
-  formData.message = messageValue;
+  formData.email = parsedValue.email;
+  formData.message = parsedValue.message;
 }
 
 addStorageValueToForm(localStorage.getItem(storageKey));
