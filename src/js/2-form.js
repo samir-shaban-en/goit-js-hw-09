@@ -1,6 +1,5 @@
 const storageKey = 'feedback-form-state';
 const formEl = document.querySelector('.feedback-form');
-
 const formData = {
   email: '',
   message: '',
@@ -17,13 +16,11 @@ function collectValuesToStorageHandler(e) {
 
 formEl.addEventListener('input', collectValuesToStorageHandler);
 
-function addStorageValueToForm(storageValue) {
+const addStorageValueToForm = storageValue => {
   if (!storageValue) {
     return;
   }
-
   const { email, message } = formEl.elements;
-
   const { email: parsedEmail, message: parsedMessage } =
     JSON.parse(storageValue);
 
@@ -32,13 +29,12 @@ function addStorageValueToForm(storageValue) {
 
   formData.email = parsedEmail;
   formData.message = parsedMessage;
-}
+};
 
 addStorageValueToForm(localStorage.getItem(storageKey));
 
 function formSubmitHandler(e) {
   e.preventDefault();
-
   const { email, message } = e.currentTarget.elements;
 
   if (email.value.trim() === '' || message.value.trim() === '') {
@@ -48,7 +44,6 @@ function formSubmitHandler(e) {
   }
 
   console.log(formData);
-
   localStorage.removeItem(storageKey);
   formData.email = '';
   formData.message = '';
