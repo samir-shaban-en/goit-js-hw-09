@@ -22,13 +22,16 @@ function addStorageValueToForm(storageValue) {
     return;
   }
 
-  const parsedValue = JSON.parse(storageValue);
+  const { email, message } = formEl.elements;
 
-  formEl.elements.email.value = parsedValue.email;
-  formEl.elements.message.value = parsedValue.message;
+  const { email: parsedEmail, message: parsedMessage } =
+    JSON.parse(storageValue);
 
-  formData.email = parsedValue.email;
-  formData.message = parsedValue.message;
+  email.value = parsedEmail;
+  message.value = parsedMessage;
+
+  formData.email = parsedEmail;
+  formData.message = parsedMessage;
 }
 
 addStorageValueToForm(localStorage.getItem(storageKey));
@@ -36,11 +39,16 @@ addStorageValueToForm(localStorage.getItem(storageKey));
 function formSubmitHandler(e) {
   e.preventDefault();
 
-  if (formData.email === '' || formData.message === '') {
+  const { email, message } = e.currentTarget.elements;
+
+  if (email.value.trim() === '' || message.value.trim() === '') {
     console.log('«Fill please all fields».');
+
     return;
   }
+
   console.log(formData);
+
   localStorage.removeItem(storageKey);
   formData.email = '';
   formData.message = '';
