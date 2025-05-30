@@ -6,38 +6,34 @@ const formData = {
   message: '',
 };
 
-function formHandler(e) {
-  const emailValue = e.currentTarget.email.value;
-  const messageValue = e.currentTarget.message.value;
+function collectValuesToStorageHandler(e) {
+  const name = e.target.name;
+  const value = e.target.value;
 
-  formData.email = emailValue.trim();
-  formData.message = messageValue.trim();
-  console.log(formData);
+  formData[name] = value.trim();
+
   localStorage.setItem(storageKey, JSON.stringify(formData));
 }
 
-formEl.addEventListener('input', formHandler);
+formEl.addEventListener('input', collectValuesToStorageHandler);
 
-function addStorageValueToInput(storageValue) {
+function addStorageValueToForm(storageValue) {
   if (!storageValue) {
     return;
   }
 
   const parsedValue = JSON.parse(storageValue);
 
-  const emailValue = parsedValue.email;
-  const messageValue = parsedValue.message;
-
-  formEl.elements.email.value = emailValue;
-  formEl.elements.message.value = messageValue;
+  formEl.elements.email.value = parsedValue.email;
+  formEl.elements.message.value = parsedValue.message;
 
   formData.email = emailValue;
   formData.message = messageValue;
 }
 
-addStorageValueToInput(localStorage.getItem(storageKey));
+addStorageValueToForm(localStorage.getItem(storageKey));
 
-function formElSubmit(e) {
+function formSubmitHandler(e) {
   e.preventDefault();
 
   if (formData.email === '' || formData.message === '') {
@@ -51,4 +47,4 @@ function formElSubmit(e) {
   e.currentTarget.reset();
 }
 
-formEl.addEventListener('submit', formElSubmit);
+formEl.addEventListener('submit', formSubmitHandler);
