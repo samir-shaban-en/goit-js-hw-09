@@ -35,11 +35,9 @@ addStorageValueToForm(localStorage.getItem(storageKey));
 
 function formSubmitHandler(e) {
   e.preventDefault();
-  const { email, message } = e.currentTarget.elements;
 
-  if (email.value.trim() === '' || message.value.trim() === '') {
+  if (formData.email === '' || formData.message === '') {
     console.log('«Fill please all fields».');
-
     return;
   }
 
